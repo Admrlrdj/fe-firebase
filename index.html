@@ -35,7 +35,58 @@
                 </tr>
             </tbody>
         </table>
+        
+        <div class="modal fade" id="mahasiswaModal" tabindex="-1" aria-labelledby="mahasiswaModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="mahasiswaModalLabel">Tambah Data Mahasiswa</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="add-mahasiswa-form">
+                            <div class="mb-3">
+                                <label for="add-nim" class="form-label">NIM</label>
+                                <input type="text" class="form-control" id="add-nim" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="add-nama" class="form-label">Nama</label>
+                                <input type="text" class="form-control" id="add-nama" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="add-jk" class="form-label">Jenis Kelamin</label>
+                                <select class="form-select" id="add-jk" required>
+                                    <option value="Laki-laki">Laki-laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="add-usia" class="form-label">Usia</label>
+                                <input type="number" class="form-control" id="add-usia" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="add-prodi" class="form-label">Program Studi</label>
+                                <select class="form-select" id="add-prodi" required>
+                                    <option value="">-- Pilih Program Studi --</option>
+                                    <option value="TRPL">Teknologi Rekayasa Perangkat Lunak</option>
+                                    <option value="INF">Informatika</option>
+                                    <option value="SI">Sistem Informasi</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer px-0 pb-0">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
 
     <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="js/mahasiswa.js"></script>

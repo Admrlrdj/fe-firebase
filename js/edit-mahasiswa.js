@@ -1,31 +1,35 @@
 $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
-    const idParam = urlParams.get('id');
+    const actualId = urlParams.get('id');
 
-    if (!idParam) {
+    if (!actualId) {
         alert("ID tidak valid!");
         window.location.href = 'index.html';
         return;
     }
 
-    const actualId = atob(decodeURIComponent(idParam));
+    const db = firebase.firestore();
 
-    $.ajax({
-        url: 'http://127.0.0.1:8000/api/mahasiswa/' + actualId,
-        method: 'GET',
-        success: function (data) {
+    // === GET SINGLE DATA: Mengambil data untuk form ===
+    db.collection("mahasiswa").doc(actualId).get().then((doc) => {
+        if (doc.exists) {
+            const data = doc.data();
             $('#nim').val(data.nim);
             $('#nama').val(data.nama);
             $('#jenis_kelamin').val(data.jenis_kelamin);
             $('#usia').val(data.usia);
 
-            $('#prodi_id').html(`<option value="${data.prodi.kode}" selected>${data.prodi.nama}</option>`);
-        },
-        error: function () {
-            alert("Data tidak ditemukan");
+            // Mengisi dropdown prodi
+            if (data.prodi) {
+                $('#prodi_id').html(`<option value="${data.prodi.kode}" selected>${data.prodi.nama}</option>`);
+            }
+        } else {
+            alert("Data tidak ditemukan!");
+            window.location.href = 'index.html';
         }
     });
 
+    // === UPDATE: Menyimpan Perubahan ===
     $('#edit-form').on('submit', function (e) {
         e.preventDefault();
 
@@ -33,23 +37,19 @@ $(document).ready(function () {
             nim: $('#nim').val(),
             nama: $('#nama').val(),
             jenis_kelamin: $('#jenis_kelamin').val(),
-            usia: $('#usia').val(),
-            prodi_kode: $('#prodi_id').val()
+            usia: parseInt($('#usia').val()),
+            prodi: {
+                kode: $('#prodi_id').val(),
+                nama: $('#prodi_id option:selected').text()
+            }
         };
 
-        $.ajax({
-            url: 'http://127.0.0.1:8000/api/mahasiswa/' + actualId,
-            method: 'PUT',
-            contentType: 'application/json',
-            data: JSON.stringify(payload),
-            success: function (response) {
-                alert('Berhasil diupdate!');
-                window.location.href = 'index.html';
-            },
-            error: function (err) {
-                alert('Gagal update data');
-                console.error(err);
-            }
+        db.collection("mahasiswa").doc(actualId).update(payload).then(() => {
+            alert('Berhasil diupdate!');
+            window.location.href = 'index.html';
+        }).catch((err) => {
+            alert('Gagal update data');
+            console.error(err);
         });
     });
 });
