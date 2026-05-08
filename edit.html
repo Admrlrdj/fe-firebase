@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="vendor/fontawesome/fontawesome.min.css" rel="stylesheet">
+    <!-- <link href="vendor/fontawesome/all.min.css" rel="stylesheet"> -->
+    <script src="vendor/fontawesome/fontawesome.min.js"></script>
+    <script src="vendor/fontawesome/all.min.js"></script>
+    <script src="vendor/jquery/jquery-4.0.0.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Edit Mahasiswa</h1>
+        <form id="edit-form">
+            <div class="mb-3">
+                <label for="nim" class="form-label">NIM</label>
+                <input type="text" class="form-control" id="nim" name="nim" required>
+            </div>
+            <div class="mb-3">
+                <label for="nama" class="form-label">Nama</label>
+                <input type="text" class="form-control" id="nama" name="nama" required>
+            </div>
+            <div class="mb-3">
+                <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                <select class="form-select" id="jenis_kelamin" name="jenis_kelamin" required>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="usia" class="form-label">Usia</label>
+                <input type="number" class="form-control" id="usia" name="usia" required>
+            </div>
+            <div class="mb-3">
+                <label for="prodi_id" class="form-label">Program Studi</label>
+                <select class="form-select" id="prodi_id" name="prodi_id" required>
+                    <option value="">-- Select Program Studi --</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+
+    <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/mahasiswa.js"></script>
+    <script src="js/edit-mahasiswa.js"></script>
+</body>
+
+</html>

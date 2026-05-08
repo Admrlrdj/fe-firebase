@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="vendor/fontawesome/fontawesome.min.css" rel="stylesheet">
+    <!-- <link href="vendor/fontawesome/all.min.css" rel="stylesheet"> -->
+    <script src="vendor/fontawesome/fontawesome.min.js"></script>
+    <script src="vendor/fontawesome/all.min.js"></script>
+    <script src="vendor/jquery/jquery-4.0.0.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mahasiswa</h1>
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#mahasiswaModal" id="add"><i class="fas fa-plus"></i> Tambah</button>
+        <button class="btn btn-danger mb-3" id="pdf"><i class="fas fa-file-pdf"></i> Export PDF</button>
+        <button class="btn btn-success mb-3" id="excel"><i class="fas fa-file-excel"></i> Export Excel</button>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>NIM</th>
+                    <th>Nama</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Usia</th>
+                    <th>Program Studi</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="mahasiswa-table-body">
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/mahasiswa.js"></script>
+</body>
+
+</html>
